@@ -1,4 +1,4 @@
-package com.reinput.reinput_discovery_server;
+package info.reinput.reinput_discovery_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.reinput.reinput_discovery_server;
+package info.reinput.reinput_discovery_server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
