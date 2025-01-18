@@ -5,7 +5,7 @@ on:
     branches: [ "main" , "RE-156-discovery-server-ci-yml-생성" ]
 
 env:
-  AWS_REGION: ap-northeast-2
+  AWS_REGION: us-east-1
   ECR_REGISTRY: public.ecr.aws/e7w4k6e4
   IMAGE_NAME: reinput/discovery-server
 
