@@ -2,7 +2,7 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" , "RE-156-discovery-server-ci-yml-생성" ]
+    branches: [ "main" ]
 
 env:
   AWS_REGION: us-east-1
