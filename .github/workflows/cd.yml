@@ -8,6 +8,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+  push:
+    branches: [ "RE-157-discovery-server-cd-yml-생성" ]
 
 env:
   AWS_REGION: us-east-1
