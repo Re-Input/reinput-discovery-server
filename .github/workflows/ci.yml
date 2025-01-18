@@ -5,8 +5,9 @@ on:
     branches: [ "main" , "RE-156-discovery-server-ci-yml-생성" ]
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  AWS_REGION: ap-northeast-2
+  ECR_REGISTRY: public.ecr.aws/e7w4k6e4
+  IMAGE_NAME: reinput/discovery-server
 
 jobs:
   build-and-push:
@@ -19,18 +20,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Extract project name
-        id: project
-        run: |
-          PROJECT_NAME=$(grep "rootProject.name" settings.gradle | cut -d"'" -f2)
-          echo "name=$PROJECT_NAME" >> $GITHUB_OUTPUT
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_PAT }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR Public
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry-type: public
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -41,6 +41,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/reinput/${{ steps.project.outputs.name }}:latest
+            ${{ env.ECR_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max 
