@@ -6,6 +6,6 @@ on:
 
 jobs:
   ci:
-    uses: reinput/reinput-shared-workflows/.github/workflows/reusable-ci.yml@main
+    uses: Re-Input/reinput-shared-workflows/.github/workflows/reusable-ci.yml@main
     with:
       image-name: reinput/discovery-server

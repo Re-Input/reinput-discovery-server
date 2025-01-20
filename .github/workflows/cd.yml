@@ -11,7 +11,7 @@ on:
 
 jobs:
   cd:
-    uses: reinput/reinput-shared-workflows/.github/workflows/reusable-cd.yml@main
+    uses: Re-Input/reinput-shared-workflows/.github/workflows/reusable-cd.yml@main
     with:
       image-name: reinput/discovery-server
       container-name: discovery-server
