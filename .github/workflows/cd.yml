@@ -15,7 +15,6 @@ jobs:
     with:
       image-name: reinput/discovery-server
       container-name: discovery-server
-      container-port: "8761"
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
